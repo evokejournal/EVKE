@@ -48,9 +48,20 @@ const categoryNames: Record<string, string> = {
   complex: "Complex / Ambiguous",
 }
 
-export default function DynamicEmotionContent({ params }: { params: { category: string; emotion: string } }) {
+interface ContentProps {
+  params: {
+    category: string;
+    emotion: string;
+  }
+}
+
+export default function DynamicEmotionContent({ params }: ContentProps) {
   const router = useRouter()
   const { category, emotion } = params
+
+  if (!category || !emotion) {
+    return <div>Invalid parameters</div>
+  }
 
   // Format the emotion name (capitalize first letter)
   const formattedEmotion = emotion.charAt(0).toUpperCase() + emotion.slice(1)

@@ -28,6 +28,17 @@ export function generateStaticParams() {
   return params
 }
 
-export default function DynamicEmotionPage({ params }: { params: { category: string; emotion: string } }) {
+interface PageProps {
+  params: {
+    category: string;
+    emotion: string;
+  }
+}
+
+export default function Page({ params }: PageProps) {
+  if (!params?.category || !params?.emotion) {
+    return <div>Loading...</div>
+  }
+  
   return <DynamicEmotionContent params={params} />
 }
