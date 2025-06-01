@@ -1,0 +1,243 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+  --tooltip-bg: #ffffff;
+  --tooltip-border: #e5e7eb;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+    --tooltip-bg: #111827;
+    --tooltip-border: #374151;
+  }
+}
+
+/* Dark mode color overrides */
+.dark {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 10, 10, 10;
+  --background-end-rgb: 30, 30, 30;
+  --tooltip-bg: #111827;
+  --tooltip-border: #374151;
+
+  /* Add transparent variants for dark mode */
+  --primary-50-transparent: rgba(245, 243, 255, 0.1);
+  --primary-100-transparent: rgba(237, 233, 254, 0.1);
+  --primary-200-transparent: rgba(221, 214, 254, 0.15);
+  --primary-300-transparent: rgba(196, 181, 253, 0.2);
+  --primary-400-transparent: rgba(167, 139, 250, 0.25);
+  --primary-500-transparent: rgba(139, 92, 246, 0.3);
+  --primary-600-transparent: rgba(124, 58, 237, 0.35);
+  --primary-700-transparent: rgba(109, 40, 217, 0.4);
+  --primary-800-transparent: rgba(91, 33, 182, 0.45);
+  --primary-900-transparent: rgba(76, 29, 149, 0.5);
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+  min-height: 100vh;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-poppins);
+  }
+}
+
+/* Custom font classes */
+.font-museoModerno {
+  font-family: var(--font-museo-moderno);
+}
+
+/* Custom colors */
+:root {
+  --evoke-purple: #6d28d9;
+  --evoke-purple-light: #8b5cf6;
+  --evoke-purple-dark: #5b21b6;
+  --primary-50: #f5f3ff;
+  --primary-100: #ede9fe;
+  --primary-200: #ddd6fe;
+  --primary-300: #c4b5fd;
+  --primary-400: #a78bfa;
+  --primary-500: #8b5cf6;
+  --primary-600: #7c3aed;
+  --primary-700: #6d28d9;
+  --primary-800: #5b21b6;
+  --primary-900: #4c1d95;
+}
+
+/* Emotion category colors */
+.emotion-joy {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.emotion-sadness {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.emotion-anger {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
+
+.emotion-fear {
+  background-color: #e0e7ff;
+  color: #3730a3;
+}
+
+.emotion-surprise {
+  background-color: #fae8ff;
+  color: #86198f;
+}
+
+.emotion-love {
+  background-color: #fce7f3;
+  color: #be185d;
+}
+
+.emotion-anticipation {
+  background-color: #ffedd5;
+  color: #9a3412;
+}
+
+.emotion-shame {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.emotion-empowerment {
+  background-color: #ecfccb;
+  color: #3f6212;
+}
+
+.emotion-calm {
+  background-color: #f0fdfa;
+  color: #0f766e;
+}
+
+.emotion-complex {
+  background-color: #f3e8ff;
+  color: #6b21a8;
+}
+
+/* Dark mode emotion category colors */
+.dark .emotion-joy {
+  background-color: rgba(254, 243, 199, 0.6);
+  color: #fcd34d;
+}
+
+.dark .emotion-sadness {
+  background-color: rgba(219, 234, 254, 0.6);
+  color: #60a5fa;
+}
+
+.dark .emotion-anger {
+  background-color: rgba(254, 226, 226, 0.6);
+  color: #f87171;
+}
+
+.dark .emotion-fear {
+  background-color: rgba(224, 231, 255, 0.6);
+  color: #818cf8;
+}
+
+.dark .emotion-surprise {
+  background-color: rgba(250, 232, 255, 0.6);
+  color: #e879f9;
+}
+
+.dark .emotion-love {
+  background-color: rgba(252, 231, 243, 0.6);
+  color: #f472b6;
+}
+
+.dark .emotion-anticipation {
+  background-color: rgba(255, 237, 213, 0.6);
+  color: #fb923c;
+}
+
+.dark .emotion-shame {
+  background-color: rgba(209, 250, 229, 0.6);
+  color: #34d399;
+}
+
+.dark .emotion-empowerment {
+  background-color: rgba(236, 252, 203, 0.6);
+  color: #a3e635;
+}
+
+.dark .emotion-calm {
+  background-color: rgba(240, 253, 250, 0.6);
+  color: #2dd4bf;
+}
+
+.dark .emotion-complex {
+  background-color: rgba(243, 232, 255, 0.6);
+  color: #c084fc;
+}
+
+/* Improve dark mode text contrast */
+.dark .text-gray-700 {
+  color: rgb(209, 213, 219);
+}
+
+.dark .text-gray-600 {
+  color: rgb(156, 163, 175);
+}
+
+/* Ensure empty state cards have proper dark mode */
+.dark .bg-gray-50 {
+  background-color: rgb(31, 41, 55);
+}
+
+/* Ensure proper contrast for emotion cards in dark mode */
+.dark .emotion-joy,
+.dark .emotion-sadness,
+.dark .emotion-anger,
+.dark .emotion-fear,
+.dark .emotion-surprise,
+.dark .emotion-love,
+.dark .emotion-anticipation,
+.dark .emotion-shame,
+.dark .emotion-empowerment,
+.dark .emotion-calm,
+.dark .emotion-complex {
+  color: rgb(255, 255, 255);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Force dark mode backgrounds for practice page components */
+.dark .practice-card {
+  background-color: rgb(17, 24, 39) !important;
+}
+
+.dark .practice-card-expanded {
+  background-color: rgba(17, 24, 39, 0.95) !important;
+}
+
+.dark .practice-category-card {
+  background-color: transparent !important;
+}
+
+.dark .practice-category-expanded {
+  background-color: rgba(17, 24, 39, 0.98) !important;
+}
+
+.dark .practice-exercise-card {
+  background-color: rgb(17, 24, 39) !important;
+}
+
+.dark .practice-exercise-expanded {
+  background-color: rgba(31, 41, 55, 0.95) !important;
+}
