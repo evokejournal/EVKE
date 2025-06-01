@@ -28,7 +28,28 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        // Get the ID token
+        const idToken = await user.getIdToken()
+        // Send the token to the server to create a session
+        const response = await fetch('/api/auth/session', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ idToken }),
+        })
+
+        if (!response.ok) {
+          console.error('Failed to create session')
+          await firebaseSignOut(auth)
+          setUser(null)
+          return
+        }
+      } else {
+        // Clear the session on the server
+        await fetch('/api/auth/session', { method: 'DELETE' })
+      }
+      
       setUser(user)
       setLoading(false)
     })
@@ -71,4 +92,4 @@ export function useAuth() {
     throw new Error("useAuth must be used within an AuthProvider")
   }
   return context
-}
+} 
