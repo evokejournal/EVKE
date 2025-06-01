@@ -9,6 +9,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  output: 'standalone',  // Changed from 'export' to 'standalone' for server actions support
+  distDir: 'out',    // Specify the output directory
 }
 
 export default nextConfig
